@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getAllPostsListing } from '../../lib/api';
+
+const posts = await getAllPostsListing();
+---
+
+<Layout title="Tous nos articles pour investir sereinement">
+  <!-- BLOG POSTS HOLDER -->
+  <div class="container">
+    <h1 class="f-title">Nos articles sur l'investissement en France</h1>
+    <p>Retrouvez des articles et des guides complets .</p>
+    <div class="posts-holder p-right-60">
+      {
+        posts.edges.map(({ node }) => {
+          return node.status === 'publish' ? (
+            <div class="blog-post">
+              <div class="blog-post-txt m-bottom-10">
+                <span>{new Date(node.date).toLocaleDateString('fr')}</span>
+
+                <a href={`/articles/${node.slug}`}>
+                  <h2 class="h4-lg">{node.title}</h2>
+                </a>
+                <div set:html={node.excerpt} />
+              </div>
+              <hr />
+            </div>
+          ) : null;
+        })
+      }
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .container {
+    max-width: 980px;
+  }
+</style>

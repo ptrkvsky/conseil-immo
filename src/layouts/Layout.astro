@@ -1,0 +1,94 @@
+---
+import { Image } from '@astrojs/image/components';
+import logoConseil from '../assets/images/logo-conseil.webp';
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav-main container">
+        <a href="/" title="Conseil Immobilier">
+          <Image src={logoConseil} alt="logo conseil investissement" />
+        </a>
+        <a class="f-title" href="/articles">Articles</a>
+      </nav>
+    </header>
+    <slot />
+
+    <style lang="scss">
+      header {
+        border-bottom: 1px solid #f6f6f6;
+      }
+
+      .nav-main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media only screen and (max-width: 600px) {
+          flex-direction: column;
+        }
+
+        a {
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    </style>
+
+    <style is:global>
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@100;400;600&display=swap');
+      body {
+        color: #0a2045;
+      }
+      .f-title {
+        font-family: 'Bitter', serif;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      a {
+        color: var(--main-color);
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      :root {
+        --main-color: #0a2045;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        font-family: system-ui, sans-serif;
+      }
+      code {
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+      }
+    </style>
+  </body>
+</html>
