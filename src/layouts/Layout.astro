@@ -26,7 +26,7 @@ const { title, description } = Astro.props;
         <a class="logo" href="/" title="Conseil Immobilier">
           <Image src={logoConseil} alt="logo conseil investissement" />
         </a>
-        <a class="f-title" href="/articles">Articles</a>
+        <a class="link-menu f-title" href="/articles">Articles</a>
       </nav>
     </header>
     <slot />
@@ -37,6 +37,11 @@ const { title, description } = Astro.props;
         @media only screen and (max-width: 1024px) {
           padding: 0 8px;
         }
+      }
+
+      .link-menu {
+        display: inline-block;
+        padding: 16px;
       }
 
       .nav-main {
