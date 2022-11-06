@@ -33,7 +33,11 @@ const schema = JSON.stringify(post.seo.schema.raw).replace(
 );
 ---
 
-<Layout title={post.seo.title} description={post.seo.metaDesc}>
+<Layout
+  title={post.seo.title}
+  canonical={`https://www.conseil-immo.eu/articles/${post.slug}`}
+  description={post.seo.metaDesc}
+>
   <div class="articles main">
     <h1>{post.title}</h1>
     <article

@@ -5,7 +5,10 @@ import { getAllPostsListing } from '../../lib/api';
 const posts = await getAllPostsListing();
 ---
 
-<Layout title="Tous nos articles pour investir sereinement">
+<Layout
+  title="Tous nos articles pour investir sereinement"
+  canonical="https://www.conseil-immo.eu/articles"
+>
   <!-- BLOG POSTS HOLDER -->
   <div class="container">
     <h1 class="f-title">Nos articles sur l'investissement en France</h1>
